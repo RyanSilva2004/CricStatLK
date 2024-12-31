@@ -12,10 +12,10 @@ public class Match {
     private int matchId;
 
     @Column(name = "team1_id")
-    private int team1Id;
+    private String team1Id;
 
     @Column(name = "team2_id")
-    private int team2Id;
+    private String team2Id;
 
     @Column(name = "match_date")
     private Date matchDate;
@@ -24,7 +24,7 @@ public class Match {
     private String venue;
 
     @Column(name = "winner_team_id")
-    private int winnerTeamId;
+    private String winnerTeamId;
 
     public int getMatchId() {
         return matchId;
@@ -34,19 +34,19 @@ public class Match {
         this.matchId = matchId;
     }
 
-    public int getTeam1Id() {
+    public String getTeam1Id() {
         return team1Id;
     }
 
-    public void setTeam1Id(int team1Id) {
+    public  void setTeam1Id(String team1Id) {
         this.team1Id = team1Id;
     }
 
-    public int getTeam2Id() {
+    public String getTeam2Id() {
         return team2Id;
     }
 
-    public void setTeam2Id(int team2Id) {
+    public void setTeam2Id(String team2Id) {
         this.team2Id = team2Id;
     }
 
@@ -66,11 +66,11 @@ public class Match {
         this.venue = venue;
     }
 
-    public int getWinnerTeamId() {
+    public String getWinnerTeamId() {
         return winnerTeamId;
     }
 
-    public void setWinnerTeamId(int winnerTeamId) {
+    public void setWinnerTeamId(String winnerTeamId) {
         this.winnerTeamId = winnerTeamId;
     }
 }
