@@ -41,4 +41,9 @@ public class PlayersController {
         playerService.deletePlayer(playerId);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/players/search")
+    public List<Player> searchPlayers(@RequestParam(required = false) String name, @RequestParam(required = false) String country) {
+        return playerService.searchPlayers(name, country);
+    }
 }

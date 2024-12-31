@@ -38,4 +38,8 @@ public class PlayerService {
     public void deletePlayer(int playerId) {
         playerRepository.deleteById(playerId);
     }
+
+    public List<Player> searchPlayers(String name, String country) {
+        return playerRepository.searchPlayers(name, country);
+    }
 }
