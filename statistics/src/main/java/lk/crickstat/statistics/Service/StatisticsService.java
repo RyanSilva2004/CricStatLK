@@ -4,6 +4,8 @@ import lk.crickstat.statistics.Data.Performance;
 import lk.crickstat.statistics.Data.Stat;
 import lk.crickstat.statistics.Data.StatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,11 +17,13 @@ public class StatisticsService {
     private StatRepository statRepository;
 
     public List<Stat> getTopRunScorers() {
-        return statRepository.findTopRunScorers();
+        Pageable topTen = PageRequest.of(0, 10);
+        return statRepository.findTopRunScorers(topTen);
     }
 
     public List<Stat> getTopWicketTakers() {
-        return statRepository.findTopWicketTakers();
+        Pageable topTen = PageRequest.of(0, 10);
+        return statRepository.findTopWicketTakers(topTen);
     }
 
     public Stat getPlayerStatistics(int playerId) {

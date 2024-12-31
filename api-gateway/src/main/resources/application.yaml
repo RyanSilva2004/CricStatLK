@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: player_service
+          uri: http://localhost:8081  # Player Service base URL
+          predicates:
+            - Path=/players/**
+        - id: stats_service
+          uri: http://localhost:8082  # Stats Service base URL
+          predicates:
+            - Path=/stats/**
+        - id: match_service
+          uri: http://localhost:8083  # Match Service base URL
+          predicates:
+            - Path=/matches/**
+        - id: dashboard_aggregation
+          uri: http://localhost:8080  # Gateway itself for aggregation endpoints
+          predicates:
+            - Path=/dashboard/**

@@ -14,6 +14,11 @@ public class PlayersController {
     @Autowired
     private PlayerService playerService;
 
+    @PostMapping("/players")
+    public Player createPlayer(@RequestBody Player player) {
+        return playerService.createPlayer(player);
+    }
+
     @GetMapping("/players")
     public List<Player> getAllPlayers() {
         return playerService.getAllPlayers();
@@ -24,11 +29,6 @@ public class PlayersController {
         return playerService.getPlayerById(playerId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
-    }
-
-    @PostMapping("/players")
-    public Player createPlayer(@RequestBody Player player) {
-        return playerService.createPlayer(player);
     }
 
     @PutMapping("/players/{playerId}")

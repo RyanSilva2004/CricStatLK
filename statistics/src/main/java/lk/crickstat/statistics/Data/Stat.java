@@ -14,34 +14,35 @@ public class Stat {
     private Integer playedMatches = 0; // Changed to Integer
 
     @Column(name = "total_runs", nullable = false, columnDefinition = "int default 0")
-    private Integer totalRuns; // Changed to Integer
+    private Integer totalRuns=0; // Changed to Integer
 
     @Column(name = "total_wickets", nullable = false, columnDefinition = "int default 0")
-    private Integer totalWickets; // Changed to Integer
+    private Integer totalWickets=0; // Changed to Integer
 
     @Column(name = "matches_played", nullable = false, columnDefinition = "int default 0")
-    private Integer matchesPlayed; // Changed to Integer
+    private Integer matchesPlayed=0; // Changed to Integer
 
     @Column(name = "batting_average", nullable = false, columnDefinition = "float default 0")
-    private Float battingAverage;
+    private Float battingAverage=0f;
 
     @Column(name = "bowling_average", nullable = false, columnDefinition = "float default 0")
-    private Float bowlingAverage;
+    private Float bowlingAverage=0f;
 
     @Column(name = "total_runsConceded", nullable = false, columnDefinition = "int default 0")
-    private Integer totalRunsConceded; // Changed to Integer
+    private Integer totalRunsConceded=0; // Changed to Integer
 
     @Column(name = "total_catches", nullable = false, columnDefinition = "int default 0")
-    private Integer totalCatches; // Changed to Integer
+    private Integer totalCatches=0; // Changed to Integer
 
     @Column(name = "total_fifties", nullable = false, columnDefinition = "int default 0")
-    private Integer totalFifties; // Changed to Integer
+    private Integer totalFifties=0; // Changed to Integer
 
     @Column(name = "total_hundreds", nullable = false, columnDefinition = "int default 0")
-    private Integer totalHundreds; // Changed to Integer
+    private Integer totalHundreds=0; // Changed to Integer
 
     @Column(name = "total_5_wickets", nullable = false, columnDefinition = "int default 0")
-    private Integer total5Wickets; // Changed to Integer
+    private Integer total5Wickets=0; // Changed to Integer
+
 
     // Getters and setters
     public Integer getPlayerId() {

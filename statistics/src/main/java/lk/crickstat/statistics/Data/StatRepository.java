@@ -1,5 +1,7 @@
 package lk.crickstat.statistics.Data;
 
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,10 +14,10 @@ import java.util.List;
 public interface StatRepository extends JpaRepository<Stat, Integer> {
 
     @Query("SELECT s FROM Stat s ORDER BY s.totalRuns DESC")
-    List<Stat> findTopRunScorers();
+    List<Stat> findTopRunScorers(Pageable pageable);
 
     @Query("SELECT s FROM Stat s ORDER BY s.totalWickets DESC")
-    List<Stat> findTopWicketTakers();
+    List<Stat> findTopWicketTakers(Pageable pageable);
 
     Stat findByPlayerId(int playerId);
 

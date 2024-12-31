@@ -17,6 +17,12 @@ public class Match {
     @Column(name = "team2_id")
     private String team2Id;
 
+    @Column(name="team1_score", nullable = true)
+    private int team1Score;
+
+    @Column(name="team2_score", nullable = true)
+    private int team2Score;
+
     @Column(name = "match_date")
     private Date matchDate;
 
@@ -25,6 +31,9 @@ public class Match {
 
     @Column(name = "winner_team_id")
     private String winnerTeamId;
+
+    @Column(name="result", nullable = true)
+    private String result;
 
     public int getMatchId() {
         return matchId;
@@ -73,4 +82,22 @@ public class Match {
     public void setWinnerTeamId(String winnerTeamId) {
         this.winnerTeamId = winnerTeamId;
     }
+
+
+    public int getTeam2Score() {
+        return team2Score;
+    }
+
+    public void setTeam2Score(int team2Score) {
+        this.team2Score = team2Score;
+    }
+
+    public int getTeam1Score() {
+        return team1Score;
+    }
+
+    public void setTeam1Score(int team1Score) {
+        this.team1Score = team1Score;
+    }
+
 }

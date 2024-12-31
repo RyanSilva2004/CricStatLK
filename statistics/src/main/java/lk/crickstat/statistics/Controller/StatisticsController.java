@@ -29,7 +29,7 @@ public class StatisticsController {
         return statisticsService.getPlayerStatistics(playerId);
     }
 
-    @PostMapping("/player/stats")
+    @PostMapping("/stats")
     public Stat createPlayerStatistics(@RequestBody Stat stat) {
         return statisticsService.createPlayerStatistics(stat);
     }
