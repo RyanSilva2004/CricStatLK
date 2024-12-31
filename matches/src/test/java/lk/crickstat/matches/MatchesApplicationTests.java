@@ -1,4 +1,4 @@
-package com.cricranker.matches;
+package lk.crickstat.matches;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

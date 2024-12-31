@@ -8,7 +8,7 @@
 		<version>3.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.cricranker</groupId>
+	<groupId>lk.crickstat</groupId>
 	<artifactId>matches</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>matches</name>
