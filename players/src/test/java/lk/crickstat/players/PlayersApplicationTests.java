@@ -1,4 +1,4 @@
-package com.cricranker.players;
+package lk.crickstat.players;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
