@@ -91,4 +91,27 @@ public class PlayersStatisticsController {
                             .thenReturn((Map<String, Object>) createdPlayer);
                 });
     }
+
+    @GetMapping("/api/player/{player_id}/stats")
+    public Mono<Map<String, Object>> getPlayerStatistics(@PathVariable("player_id") int playerId) {
+        WebClient webClient = webClient();
+
+        Mono<Map<String, Object>> playerDetailsMono = webClient.get()
+                .uri("http://localhost:8081/players/{playerId}", playerId)
+                .retrieve()
+                .bodyToMono((Class<Map<String, Object>>)(Class<?>)Map.class);
+
+        Mono<Map<String, Object>> playerStatsMono = webClient.get()
+                .uri("http://localhost:8084/player/{player_id}/stats", playerId)
+                .retrieve()
+                .bodyToMono((Class<Map<String, Object>>)(Class<?>)Map.class);
+
+        return Mono.zip(playerDetailsMono, playerStatsMono)
+                .map(tuple -> {
+                    Map<String, Object> combined = new HashMap<>(tuple.getT1());
+                    combined.putAll(tuple.getT2());
+                    return combined;
+                });
+    }
+
 }

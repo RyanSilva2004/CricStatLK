@@ -24,7 +24,7 @@ public class StatisticsController {
         return statisticsService.getTopWicketTakers();
     }
 
-    @GetMapping("/player/{player_id}/stats")
+    @GetMapping("/players/{player_id}/stats")
     public Stat getPlayerStatistics(@PathVariable("player_id") int playerId) {
         return statisticsService.getPlayerStatistics(playerId);
     }
