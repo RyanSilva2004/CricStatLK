@@ -36,6 +36,8 @@ public class MatchesService {
         match.setMatchDate(matchDetails.getMatchDate());
         match.setVenue(matchDetails.getVenue());
         match.setWinnerTeamId(matchDetails.getWinnerTeamId());
+        match.setTeam1Score(matchDetails.getTeam1Score());
+        match.setTeam2Score(matchDetails.getTeam2Score());
         return matchRepository.save(match);
     }
 
@@ -66,6 +68,12 @@ public class MatchesService {
             int losses = ((Number) loss.get("losses")).intValue();
             teamWinLossRecord.putIfAbsent(teamId, new HashMap<>());
             teamWinLossRecord.get(teamId).put("losses", teamWinLossRecord.get(teamId).getOrDefault("losses", 0) + losses);
+        }
+
+        // Ensure all teams have both wins and losses keys
+        for (String teamId : teamWinLossRecord.keySet()) {
+            teamWinLossRecord.get(teamId).putIfAbsent("wins", 0);
+            teamWinLossRecord.get(teamId).putIfAbsent("losses", 0);
         }
 
         return teamWinLossRecord;

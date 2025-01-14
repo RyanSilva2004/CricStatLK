@@ -38,7 +38,7 @@ public class MatchesController {
         return ResponseEntity.ok(matchesService.updateMatch(matchId, matchDetails));
     }
 
-    @GetMapping("/matches/team-win-loss")
+    @GetMapping("/teams/matches/record")
     public ResponseEntity<Map<String, Map<String, Integer>>> getTeamWinLossRecord() {
         return ResponseEntity.ok(matchesService.getTeamWinLossRecord());
     }

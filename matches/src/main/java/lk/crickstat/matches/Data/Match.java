@@ -18,10 +18,10 @@ public class Match {
     private String team2Id;
 
     @Column(name="team1_score", nullable = true)
-    private int team1Score;
+    private Integer team1Score=0;
 
     @Column(name="team2_score", nullable = true)
-    private int team2Score;
+    private Integer team2Score=0;
 
     @Column(name = "match_date")
     private Date matchDate;

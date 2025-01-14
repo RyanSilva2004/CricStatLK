@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class PlayersController {
+public class PlayersController
+{
 
     @Autowired
     private WebClient.Builder webClientBuilder;
@@ -20,7 +21,8 @@ public class PlayersController {
     }
 
     @GetMapping("/api/players/{playerId}")
-    public Mono<ResponseEntity<Map<String, Object>>> getPlayersById(@PathVariable int playerId) {
+    public Mono<ResponseEntity<Map<String, Object>>> getPlayersById(@PathVariable int playerId)
+    {
         return webClient().get()
                 .uri("http://localhost:8081/players/{playerId}", playerId)
                 .retrieve()
@@ -30,7 +32,8 @@ public class PlayersController {
     }
 
     @GetMapping("/api/players")
-    public Mono<ResponseEntity<List<Map<String, Object>>>> getPlayers() {
+    public Mono<ResponseEntity<List<Map<String, Object>>>> getPlayers()
+    {
         return webClient().get()
                 .uri("http://localhost:8081/players")
                 .retrieve()
@@ -38,4 +41,5 @@ public class PlayersController {
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
+
 }
