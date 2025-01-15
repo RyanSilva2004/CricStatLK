@@ -1,8 +1,10 @@
 package lk.cricstat.api_gateway.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
@@ -10,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class PlayersStatisticsController {
 
@@ -27,7 +30,7 @@ public class PlayersStatisticsController {
         Mono<List<Map<String, Object>>> topScorers = webClient.get()
                 .uri("http://localhost:8084/stats/top-scorers")
                 .retrieve()
-                .bodyToFlux((Class<Map<String, Object>>)(Class<?>)Map.class)
+                .bodyToFlux(new ParameterizedTypeReference<Map<String, Object>>() {})
                 .collectList();
 
         return topScorers.flatMapMany(statsList -> {
@@ -35,26 +38,28 @@ public class PlayersStatisticsController {
                 int playerId = (int) stats.get("playerId");
 
                 return webClient.get()
-                        .uri("http://localhost:8081/players/" + playerId)
+                        .uri("http://localhost:8081/players/{playerId}", playerId)
                         .retrieve()
-                        .bodyToMono((Class<Map<String, Object>>)(Class<?>)Map.class)
+                        .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
                         .map(playerDetails -> {
+                            // Combine player details with stats
                             Map<String, Object> combined = new HashMap<>(playerDetails);
                             combined.putAll(stats);
                             return combined;
-                        });
+                        })
+                        .onErrorResume(WebClientResponseException.NotFound.class, e -> Mono.empty());
             });
         });
     }
 
-    @GetMapping("api/players/top-bowlers")
+    @GetMapping("api/players/top-wicket-takers")
     public Flux<Map<String, Object>> getTopBowlers() {
         WebClient webClient = webClient();
 
         Mono<List<Map<String, Object>>> topBowlers = webClient.get()
-                .uri("http://localhost:8084/stats/top-bowlers")
+                .uri("http://localhost:8084/stats/top-wicket-takers")
                 .retrieve()
-                .bodyToFlux((Class<Map<String, Object>>)(Class<?>)Map.class)
+                .bodyToFlux(new ParameterizedTypeReference<Map<String, Object>>() {})
                 .collectList();
 
         return topBowlers.flatMapMany(statsList -> {
@@ -62,14 +67,16 @@ public class PlayersStatisticsController {
                 int playerId = (int) stats.get("playerId");
 
                 return webClient.get()
-                        .uri("http://localhost:8081/players/" + playerId)
+                        .uri("http://localhost:8081/players/{playerId}", playerId)
                         .retrieve()
-                        .bodyToMono((Class<Map<String, Object>>)(Class<?>)Map.class)
+                        .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
                         .map(playerDetails -> {
+                            // Combine player details with stats
                             Map<String, Object> combined = new HashMap<>(playerDetails);
                             combined.putAll(stats);
                             return combined;
-                        });
+                        })
+                        .onErrorResume(WebClientResponseException.NotFound.class, e -> Mono.empty());
             });
         });
     }
