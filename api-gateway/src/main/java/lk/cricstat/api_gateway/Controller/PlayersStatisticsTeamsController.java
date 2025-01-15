@@ -1,4 +1,4 @@
-package lk.cricstat.api_gateway.Controller;
+/*package lk.cricstat.api_gateway.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -68,4 +68,4 @@ public class PlayersStatisticsTeamsController {
                     });
         });
     }
-}
+}*/
