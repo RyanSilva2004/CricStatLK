@@ -99,7 +99,7 @@ public class PlayersStatisticsController {
                 });
     }
 
-    @GetMapping("/api/player/{player_id}/stats")
+    @GetMapping("/api/players/{player_id}/stats")
     public Mono<Map<String, Object>> getPlayerStatistics(@PathVariable("player_id") int playerId) {
         WebClient webClient = webClient();
 
@@ -109,7 +109,7 @@ public class PlayersStatisticsController {
                 .bodyToMono((Class<Map<String, Object>>)(Class<?>)Map.class);
 
         Mono<Map<String, Object>> playerStatsMono = webClient.get()
-                .uri("http://localhost:8084/player/{player_id}/stats", playerId)
+                .uri("http://localhost:8084/players/{player_id}/stats", playerId)
                 .retrieve()
                 .bodyToMono((Class<Map<String, Object>>)(Class<?>)Map.class);
 

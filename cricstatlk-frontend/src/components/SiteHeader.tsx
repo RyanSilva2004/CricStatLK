@@ -31,16 +31,16 @@ export function SiteHeader() {
             Players
           </Link>
           <Link
-            href="/videos"
+            href="/performances"
             className="text-white transition-colors hover:text-white/80"
           >
-            Videos
+            Performances
           </Link>
           <Link
-            href="/players"
+            href="/teams"
             className="text-white transition-colors hover:text-white/80"
           >
-            Players
+            Teams
           </Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin("localhost:3000")
 @RestController
 public class PerformanceController
 {

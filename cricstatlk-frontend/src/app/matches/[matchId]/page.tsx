@@ -74,7 +74,7 @@ const MatchPerformancePage = () => {
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <div className="flex items-center space-x-4">
                   <div className="w-20 h-20 bg-white rounded-full p-2 flex items-center justify-center">
-                    <img src={team1Image || "/placeholder.svg"} alt={team1Id} className="w-16 h-16 object-contain" />
+                    <img src={team1Image || "/placeholder.svg"} alt={team1Id} className="w-20 h-20 object-contain" />
                   </div>
                   <h1 className="text-3xl font-bold">{team1Id}</h1>
                 </div>
@@ -82,7 +82,7 @@ const MatchPerformancePage = () => {
                 <div className="flex items-center space-x-4">
                   <h1 className="text-3xl font-bold">{team2Id}</h1>
                   <div className="w-20 h-20 bg-white rounded-full p-2 flex items-center justify-center">
-                    <img src={team2Image || "/placeholder.svg"} alt={team2Id} className="w-16 h-16 object-contain" />
+                    <img src={team2Image || "/placeholder.svg"} alt={team2Id} className="w-20 h-20 object-contain" />
                   </div>
                 </div>
               </div>
@@ -136,7 +136,7 @@ const MatchPerformancePage = () => {
                           <img 
                             src={performance.playerImage || "/placeholder.svg"} 
                             alt={performance.playerName} 
-                            className="w-14 h-14 object-cover"
+                            className="w-16 h-16 object-cover"
                           />
                         </div>
                         <div>
@@ -178,7 +178,7 @@ const MatchPerformancePage = () => {
                           <img 
                             src={performance.playerImage || "/placeholder.svg"} 
                             alt={performance.playerName} 
-                            className="w-14 h-14 object-cover"
+                            className="w-16 h-16 object-cover"
                           />
                         </div>
                         <div>
@@ -226,7 +226,7 @@ const MatchPerformancePage = () => {
                           <img 
                             src={performance.playerImage || "/placeholder.svg"} 
                             alt={performance.playerName} 
-                            className="w-14 h-14 object-cover"
+                            className="w-16 h-16 object-cover"
                           />
                         </div>
                         <div>
