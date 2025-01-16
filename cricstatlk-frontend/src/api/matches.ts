@@ -39,7 +39,7 @@ export const updateMatch = async (matchId: number, updatedMatch: any) => {
 };
 
 export const fetchMatchDetails = async (matchId: number) => {
-  const response = await fetch(`http://localhost:8080/api/matches/${matchId}`);
+  const response = await fetch(`${API_BASE_URL}/api/matches/${matchId}`);
   
   if (!response.ok) {
     throw new Error('Failed to fetch match details');

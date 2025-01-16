@@ -68,3 +68,17 @@ export const deletePlayer = async (playerId: number) => {
   const response = await axios.delete(`${API_BASE_URL}/api/players/${playerId}`);
   return response.data;
 };
+
+const fetchPlayersByTeam = async (teamId: string) => {
+  try {
+    const response = await fetch(`http://localhost:8080/api/players/search?country=${teamId}`);
+    if (!response.ok) {
+      throw new Error('Error fetching players');
+    }
+    const data = await response.json();
+    return data;  // Assuming the response is an array of player objects
+  } catch (error) {
+    console.error('Error fetching players:', error);
+    throw error;
+  }
+};
