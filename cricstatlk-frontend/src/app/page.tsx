@@ -45,7 +45,7 @@ const HomePage = () => {
   return (
     <div className="p-4">
       {/* Matches Section */}
-      <h1 className="text-2xl font-bold mb-4">Upcoming Matches</h1>
+      <h1 className="text-2xl font-bold mb-4">Latest Matches</h1>
       <div className="overflow-x-auto mb-8">
         <div className="flex space-x-4">
           {matches.map((match: any) => (
