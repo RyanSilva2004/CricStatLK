@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "img.icons8.com",
+        hostname: "**", // Allows all hostnames
         port: "",
-        pathname: "/**",
+        pathname: "/**", // Allows all paths
       },
     ],
   },

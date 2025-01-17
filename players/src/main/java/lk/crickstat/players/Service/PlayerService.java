@@ -42,4 +42,9 @@ public class PlayerService {
     public List<Player> searchPlayers(String name, String country) {
         return playerRepository.searchPlayers(name, country);
     }
+
+    public List<Player> getPlayersByTeamId(String teamId)
+    {
+        return playerRepository.searchPlayers(null, teamId);
+    }
 }

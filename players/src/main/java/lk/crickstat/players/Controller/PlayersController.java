@@ -46,4 +46,9 @@ public class PlayersController {
     public List<Player> searchPlayers(@RequestParam(required = false) String name, @RequestParam(required = false) String country) {
         return playerService.searchPlayers(name, country);
     }
+
+    @GetMapping("/teams/{teamId}/players")
+    public List<Player> getPlayersByTeamId(@PathVariable String teamId) {
+        return playerService.getPlayersByTeamId(teamId);
+    }
 }

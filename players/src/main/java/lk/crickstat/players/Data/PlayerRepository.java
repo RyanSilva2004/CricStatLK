@@ -10,4 +10,6 @@ public interface PlayerRepository extends JpaRepository<Player, Integer> {
 
     @Query("SELECT p FROM Player p WHERE (:name IS NULL OR p.name LIKE %:name%) AND (:country IS NULL OR p.country = :country)")
     List<Player> searchPlayers(@Param("name") String name, @Param("country") String country);
+
+
 }

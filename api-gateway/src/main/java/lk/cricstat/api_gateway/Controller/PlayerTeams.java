@@ -55,4 +55,29 @@ public class PlayerTeams
                 .defaultIfEmpty(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
+    @GetMapping("/api/teams/{teamId}/players")
+    public Mono<ResponseEntity<List<Map>>> getPlayersByTeamId(@PathVariable String teamId) {
+        return webClient()
+                .get()
+                .uri("http://localhost:8081/teams/{teamId}/players", teamId)
+                .retrieve()
+                .bodyToFlux(Map.class)
+                .flatMap(player -> {
+                    Integer playerId = (int) player.get("playerId");
+                    return webClient()
+                            .get()
+                            .uri("http://localhost:8084/players/{playerId}/stats", playerId)
+                            .retrieve()
+                            .bodyToFlux(Map.class)
+                            .collectList()
+                            .map(stats -> {
+                                player.put("stats", stats);
+                                return player;
+                            });
+                })
+                .collectList()
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
+
 }
