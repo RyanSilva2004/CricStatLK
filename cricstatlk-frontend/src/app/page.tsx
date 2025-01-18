@@ -47,7 +47,7 @@ const HomePage = () => {
       {/* Matches Section */}
       <h1 className="text-2xl font-bold mb-4">Latest Matches</h1>
       <div className="overflow-x-auto mb-8">
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 min-w-max">
           {matches.map((match: any) => (
             <MatchCard
               key={match.matchId}
@@ -68,7 +68,7 @@ const HomePage = () => {
       {/* Top Run Scorers Section */}
       <h2 className="text-2xl font-bold mb-4">Top Run Scorers</h2>
       <div className="overflow-x-auto mb-8">
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 min-w-max">
           {topScorers.map((scorer: any) => (
             <TopScorerCard
               key={scorer.playerId}
@@ -88,7 +88,7 @@ const HomePage = () => {
       {/* Top Wicket Takers Section */}
       <h2 className="text-2xl font-bold mb-4">Top Wicket Takers</h2>
       <div className="overflow-x-auto">
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 min-w-max">
           {topWicketTakers.map((bowler: any) => (
             <TopWicketTakerCard
               key={bowler.playerId}

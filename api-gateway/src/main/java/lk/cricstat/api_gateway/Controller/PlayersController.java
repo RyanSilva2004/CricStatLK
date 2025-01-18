@@ -58,6 +58,7 @@ public class PlayersController
     @PutMapping("/api/players/{playerId}")
     public Mono<ResponseEntity<Map<String, Object>>> updatePlayer(@PathVariable int playerId, @RequestBody Map<String, Object> playerDetails)
     {
+
         return webClient().put()
                 .uri("http://localhost:8081/players/{playerId}", playerId)
                 .body(Mono.just(playerDetails), Map.class)
